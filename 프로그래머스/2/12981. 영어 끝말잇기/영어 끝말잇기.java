@@ -3,13 +3,16 @@ class Solution {
         
         // 탈락하는 단어의 인덱스 넘버를 찾기
         int wrongAnswerIndex = 0;
+        char endingCh;
+        char startingCh;
+        
         // (length - 1)번 반복
         for(int i = 1; i < words.length; i++) {
             // 단어 끝&시작 알파벳이 잘못되었을 경우
-            char endingAlphabet = words[i - 1].charAt(words[i - 1].length() - 1);
-            char startingAlphabet = words[i].charAt(0);
+            endingCh = words[i - 1].charAt(words[i - 1].length() - 1);
+            startingCh = words[i].charAt(0);
             
-            if(endingAlphabet != startingAlphabet) {
+            if(endingCh != startingCh) {
                 wrongAnswerIndex = i;
                 break;
             }
@@ -51,5 +54,35 @@ class Solution {
         System.out.println("Hello Java");
         int[] answer = {person, round};
         return answer;
+        
+        
+        
+        /*
+            HashSet사용 풀이
+            
+            int[] answer = { 0, 0 };
+            char chEnd = words[0].charAt(words[0].length() - 1);
+            char chStart;
+            System.out.print(chEnd + " ");
+            HashSet<String> log = new HashSet<>();
+            log.add(words[0]);
+            for (int i = 1; i < words.length; i++) {
+                chStart = words[i].charAt(0);
+                log.add(words[i]);
+                if (chEnd != chStart || log.size() != i + 1) {
+                    System.out.print(i + 1 + "!");
+                    answer[0] = (i % n)+1;
+                    answer[1] = (i / n) + 1;
+                    break;
+                }
+
+                chEnd = words[i].charAt(words[i].length() - 1);
+                System.out.print(chEnd + " ");
+            }
+            System.out.println();
+            System.out.println("(" + answer[0] + ", " + answer[1] + ")");
+            return answer;
+        */
+        
     }
 }
