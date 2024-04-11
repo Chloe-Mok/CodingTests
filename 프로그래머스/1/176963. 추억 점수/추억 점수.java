@@ -11,7 +11,14 @@ class Solution {
 		for(int i = 0; i < name.length; i++) {
 			people.put(name[i], yearning[i]);
 		}
-		
+        
+        // null, containsKey, getOrDefault
+        		for(int i = 0; i < photo.length; i++) {
+			for(int j = 0; j < photo[i].length; j++) {
+                answer[i] += people.getOrDefault(photo[i][j], 0);
+			}
+		}     
+		/*
 		for(int i = 0; i < photo.length; i++) {
 			for(int j = 0; j < photo[i].length; j++) {
 				if(null != people.get(photo[i][j])) {
@@ -19,7 +26,7 @@ class Solution {
 				}
 			}
 		}     
-                
+        */       
         return answer;
     }
 }
